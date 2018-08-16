@@ -1,19 +1,18 @@
 #!/usr/bin/python3
 
-import os
-import csv
-import subprocess
-from lib.mail import *
+from os import devnull
+from csv import reader
+from subprocess import call, STDOUT
+from lib.mail import sendgrid_mail
 
 # Define variables
 count = "4"
 
 # Define /dev/null
-FNULL = open(os.devnull, 'w')
+FNULL = open(devnull, 'w')
 
 # Read the data in the hosts.csv file
-hosts = open('hosts.csv')
-hosts_reader = csv.reader(hosts)
+hosts_reader = reader(open('hosts.csv'))
 hosts = list(hosts_reader)
 
 def ping_hosts():
@@ -21,12 +20,12 @@ def ping_hosts():
     for host in range(len(hosts)):
         name = hosts[host][0]
         ip = hosts[host][1]
-        res = subprocess.call(['ping', '-c', count, ip], stdout=FNULL, stderr=subprocess.STDOUT)
+        res = call(['ping', '-c', count, ip], stdout=FNULL, stderr=STDOUT)
         if res == 0:
-            print("ping to", name, "OK")
+            print("Ping to", name, "OK")
         elif res == 2:
             # 100% failed
-            print("no response from", name)
+            print("No response from", name)
             sendgrid_mail(name, ip)
         else:
             print("ping to", name, "failed!")
