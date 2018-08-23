@@ -3,7 +3,7 @@
 from os import devnull
 from subprocess import call, STDOUT
 from lib.mail import sendgrid_mail
-import yaml
+from yaml import load
 
 # Define variables
 count = "4"
@@ -13,12 +13,12 @@ FNULL = open(devnull, 'w')
 
 def read_config():
     with open('config.yml', 'r') as f:
-        doc = yaml.load(f)
+        doc = load(f)
     return doc
 
 def ping_hosts():
+    # Analyze every host in config.yml
     config = read_config()
-    # Analyze every host in hosts.csv
     for host in range(len(config["hosts"])):
         name = config["hosts"][host].split(" => ")[0]
         ip = config["hosts"][host].split(" => ")[1]

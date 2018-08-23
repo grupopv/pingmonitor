@@ -3,13 +3,12 @@
 #PingMonitor Telnet Mail Sender.
 #authors rgonzalez, cetinajero. Sep 2009
 
-import os
 import telnetlib
 import datetime
 import sys
 import sendgrid
 from sendgrid.helpers.mail import *
-import yaml
+from yaml import load
 
 # Define variables
 host = "mail.pvlider.com"
@@ -28,7 +27,7 @@ year = today.strftime('%Y')
 
 def read_config():
     with open('config.yml', 'r') as f:
-        doc = yaml.load(f)
+        doc = load(f)
     return doc
 
 def telnet_mail(name, ip):
