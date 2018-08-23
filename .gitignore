@@ -1,8 +1,8 @@
-# Sensitive data
-hosts.csv
-
 # Python compiled byte code files
 *.pyc
 
 # Python cache files
 __pycache__
+
+# Config YAML
+config.yml

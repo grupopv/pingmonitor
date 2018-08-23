@@ -6,6 +6,9 @@
 import telnetlib
 import datetime
 import sys
+import sendgrid
+from sendgrid.helpers.mail import *
+from yaml import load
 
 # Define variables
 host = "mail.pvlider.com"
@@ -21,6 +24,11 @@ today = datetime.date.today()
 day = today.strftime('%d')
 month = today.strftime('%h')
 year = today.strftime('%Y')
+
+def read_config():
+    with open('config.yml', 'r') as f:
+        doc = load(f)
+    return doc
 
 def telnet_mail(name, ip):
     tn = telnetlib.Telnet(host, port)
@@ -39,4 +47,12 @@ def telnet_mail(name, ip):
     tn.write("quit\n")
 
 def sendgrid_mail(name, ip):
-    print("Sending email...")
+    config = read_config()
+    sg = sendgrid.SendGridAPIClient(config["apikey"])
+    from_email = Email(config["from"])
+    to_email = Email(config["to"])
+    subject = config["subject"]
+    content = Content("text/html",config["html-content"])
+    mail = Mail(from_email, subject, to_email, content)
+    response = sg.client.mail.send.post(request_body=mail.get())
+    print("Sending mail...")
