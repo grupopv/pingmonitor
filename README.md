@@ -15,6 +15,12 @@ Install dependencies:
 
 `pip install sendgrid pyyaml`
 
+### Configuration
+
+Create your own YAML configuration file:
+
+`cp config_template.yml config.yml`
+
 ### Execution
 
 To run the script:

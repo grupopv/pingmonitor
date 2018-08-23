@@ -1,0 +1,15 @@
+# Sendgrid API Key
+apikey: SG.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-XXXXXXXXXXXX
+
+# Email configuration:
+from: user@company.com
+to: alias@company.com
+subject: Notification from Ping Monitor
+html-content: |
+  <p style="color:green";>This is a test!</p>
+
+# Hosts to monitor
+hosts:
+  - Google => google.com
+  - Google Public DNS => 8.8.8.8
+  - GitHub => github.com
