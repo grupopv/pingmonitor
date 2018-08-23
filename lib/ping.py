@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
 from os import devnull
-from csv import reader
 from subprocess import call, STDOUT
 from lib.mail import sendgrid_mail
+import yaml
 
 # Define variables
 count = "4"
@@ -11,15 +11,17 @@ count = "4"
 # Define /dev/null
 FNULL = open(devnull, 'w')
 
-# Read the data in the hosts.csv file
-hosts_reader = reader(open('hosts.csv'))
-hosts = list(hosts_reader)
+def read_config():
+    with open('config.yml', 'r') as f:
+        doc = yaml.load(f)
+    return doc
 
 def ping_hosts():
+    config = read_config()
     # Analyze every host in hosts.csv
-    for host in range(len(hosts)):
-        name = hosts[host][0]
-        ip = hosts[host][1]
+    for host in range(len(config["hosts"])):
+        name = config["hosts"][host].split(" => ")[0]
+        ip = config["hosts"][host].split(" => ")[1]
         res = call(['ping', '-c', count, ip], stdout=FNULL, stderr=STDOUT)
         if res == 0:
             print("Ping to", name, "OK")
