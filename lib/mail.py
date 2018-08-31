@@ -20,10 +20,11 @@ PingMonitor
 \r\n.\r\n
 """
 
-today = datetime.date.today()
+today = datetime.datetime.today()
 day = today.strftime('%d')
 month = today.strftime('%h')
 year = today.strftime('%Y')
+time = today.strftime('%I:%M')
 
 def read_config():
     with open('config.yml', 'r') as f:
@@ -51,8 +52,8 @@ def sendgrid_mail(name, ip):
     sg = sendgrid.SendGridAPIClient(config["apikey"])
     from_email = Email(config["from"])
     to_email = Email(config["to"])
-    subject = config["subject"]
-    content = Content("text/html",config["html-content"])
+    subject = config["subject"] % (name)
+    content = Content("text/html",config["html-content"] % (name, ip, time, day, month, year))
     mail = Mail(from_email, subject, to_email, content)
     response = sg.client.mail.send.post(request_body=mail.get())
     print("Sending mail...")
