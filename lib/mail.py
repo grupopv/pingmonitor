@@ -24,7 +24,7 @@ today = datetime.datetime.today()
 day = today.strftime('%d')
 month = today.strftime('%h')
 year = today.strftime('%Y')
-time = today.strftime('%I:%M')
+time = today.strftime('%l:%M %p')
 
 def read_config():
     with open('config.yml', 'r') as f:

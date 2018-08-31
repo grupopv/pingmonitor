@@ -23,6 +23,9 @@ apikey: SG.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-XXXXXXXXXXXX
 # Email configuration:
 from: user@company.com
 to: alias@company.com
-subject: Notification from Ping Monitor
+subject: Warning | Host %s is down
 html-content: |
-  <p style="color:green";>This is a test!</p>
+  <h2>Hello!</h2>
+  <p>The host <b>%s (%s)</b> has not responded in the last revision at <b>%s</b> on <b>%s / %s / %s </b>.</p>
+  <p>Please check it out!</p>
+  <p>We'll monitoring it again in 30 minutes.</p>
