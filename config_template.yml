@@ -1,3 +1,22 @@
+# Hosts to monitor
+hosts:
+   - { name: Google, host: google.com, schedule: always }
+   - { name: Google Public DNS, host: 8.8.8.8, schedule: always }
+   - { name: GitHub, host: github.com, schedule: working hours }
+
+# Monitor's configuration
+ping:
+  count: 4
+
+# Schedules
+working_hours:
+  weekdays:
+    start: { hour: 8, minute: 00, second: 00 }
+    finish: { hour: 16, minute: 59, second: 59 }
+  weekend:
+    start: { hour: 8, minute: 00, second: 00 }
+    finish: { hour: 12, minute: 59, second: 59 }
+
 # Sendgrid API Key
 apikey: SG.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-XXXXXXXXXXXX
 
@@ -7,9 +26,3 @@ to: alias@company.com
 subject: Notification from Ping Monitor
 html-content: |
   <p style="color:green";>This is a test!</p>
-
-# Hosts to monitor
-hosts:
-  - Google => google.com
-  - Google Public DNS => 8.8.8.8
-  - GitHub => github.com
