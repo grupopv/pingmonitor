@@ -47,13 +47,13 @@ def telnet_mail(name, ip):
     tn.read_until("queued as XXXXXX",1)
     tn.write("quit\n")
 
-def sendgrid_mail(name, ip):
+def sendgrid_mail(type, name, value):
     config = read_config()
     sg = sendgrid.SendGridAPIClient(config["apikey"])
     from_email = Email(config["from"])
     to_email = Email(config["to"])
-    subject = config["subject"] % (name)
-    content = Content("text/html",config["html-content"] % (name, ip, time, day, month, year))
+    subject = config["subject"][type] % (name)
+    content = Content("text/html",config["html-content"][type] % (name, value, time, day, month, year))
     mail = Mail(from_email, subject, to_email, content)
     response = sg.client.mail.send.post(request_body=mail.get())
     print("Sending mail...")
