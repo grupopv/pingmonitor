@@ -29,7 +29,7 @@ def ping_hosts():
             elif res == 2:
                 # 100% failed
                 print("No response from", name)
-                sendgrid_mail(name, ip)
+                sendgrid_mail('ping', name, ip)
             else:
                 print("ping to", name, "failed!")
 

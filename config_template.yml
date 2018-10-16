@@ -4,6 +4,17 @@ hosts:
    - { name: Google Public DNS, host: 8.8.8.8, schedule: always }
    - { name: GitHub, host: github.com, schedule: working hours }
 
+# HDD Partitions
+hdd:
+  partitions:
+    - /dev/disk1s1
+    - /dev/disk1s2
+    - /dev/disk1s3
+    - /dev/disk1s4
+  available_space:
+    column: 5
+  porcentage_space: 80
+
 # Monitor's configuration
 ping:
   count: 4
@@ -23,9 +34,17 @@ apikey: SG.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-XXXXXXXXXXXX
 # Email configuration:
 from: user@company.com
 to: alias@company.com
-subject: Warning | Host %s is down
-html-content: |
-  <h2>Hello!</h2>
-  <p>The host <b>%s (%s)</b> has not responded in the last revision at <b>%s</b> on <b>%s / %s / %s </b>.</p>
-  <p>Please check it out!</p>
-  <p>We'll monitoring it again in 30 minutes.</p>
+subject:
+  ping: Warning | Host %s is down
+  hdd: Warning | Partition %s is almost full
+html-content:
+  ping: |
+    <h2>Hello!</h2>
+    <p>The host <b>%s (%s)</b> has not responded in the last revision at <b>%s</b> on <b>%s / %s / %s </b>.</p>
+    <p>Please check it out!</p>
+    <p>We'll monitoring it again in 30 minutes.</p>
+  hdd: |
+    <h2>Hello!</h2>
+    <p>The partition <b>%s</b> is almost full, it has <b>%s</b>%% of disk usage in the last revision at <b>%s</b> on <b>%s / %s / %s </b>.</p>
+    <p>Please check it out!</p>
+    <p>We'll monitoring it again in 30 minutes.</p>
