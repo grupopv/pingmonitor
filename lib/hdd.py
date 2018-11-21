@@ -1,4 +1,4 @@
-from subprocess import check_output, call
+from subprocess import check_output
 from yaml import load
 from lib.mail import sendgrid_mail
 

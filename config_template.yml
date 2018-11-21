@@ -15,6 +15,16 @@ hdd:
     column: 5
   porcentage_space: 80
 
+#RAM
+ram:
+  total:
+    row: 2
+    column: 2
+  available:
+    row: 3
+    column: 4
+  porcentage_space: 80
+
 # Monitor's configuration
 ping:
   count: 4
@@ -37,6 +47,7 @@ to: alias@company.com
 subject:
   ping: Warning | Host %s is down
   hdd: Warning | Partition %s is almost full
+  ram: Warning | The host %s is almost out of RAM
 html-content:
   ping: |
     <h2>Hello!</h2>
@@ -48,3 +59,8 @@ html-content:
     <p>The partition <b>%s</b> is almost full, it has <b>%s</b>%% of disk usage in the last revision at <b>%s</b> on <b>%s / %s / %s </b>.</p>
     <p>Please check it out!</p>
     <p>We'll monitoring it again in 30 minutes.</p>
+    ram: |
+      <h2>Hello!</h2>
+      <p>The Host <b>%s</b> has <b>%s%%</b> usage of memory in the last revision at <b>%s</b> on <b>%s / %s / %s </b>.</p>
+      <p>Please check it out!</p>
+      <p>We'll monitoring it again in 30 minutes.</p>
