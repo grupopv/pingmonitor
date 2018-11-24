@@ -6,3 +6,6 @@ __pycache__
 
 # Config YAML
 config.yml
+
+# pyenv
+.python-version
