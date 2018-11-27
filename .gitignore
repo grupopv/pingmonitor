@@ -9,3 +9,6 @@ config.yml
 
 # pyenv
 .python-version
+
+# logs
+crontab.log
