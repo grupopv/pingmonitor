@@ -6,9 +6,9 @@
 import telnetlib
 import datetime
 import sys
-import sendgrid
-from sendgrid.helpers.mail import *
-from yaml import load
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+from yaml import safe_load
 
 # Define variables
 host = "mail.pvlider.com"
@@ -28,7 +28,7 @@ time = today.strftime('%l:%M %p')
 
 def read_config():
     with open('config.yml', 'r') as f:
-        doc = load(f)
+        doc = safe_load(f)
     return doc
 
 def telnet_mail(name, ip):
@@ -49,11 +49,14 @@ def telnet_mail(name, ip):
 
 def sendgrid_mail(type, name, value):
     config = read_config()
-    sg = sendgrid.SendGridAPIClient(config["apikey"])
-    from_email = Email(config["from"])
-    to_email = Email(config["to"])
-    subject = config["subject"][type] % (name)
-    content = Content("text/html",config["html-content"][type] % (name, value, time, day, month, year))
-    mail = Mail(from_email, subject, to_email, content)
-    response = sg.client.mail.send.post(request_body=mail.get())
+
+    message = Mail(
+        from_email = config["from"],
+        to_emails = config["to"],
+        subject = config["subject"][type] % (name),
+        html_content = config["html-content"][type] % (name, value, time, day, month, year)
+    )
+
+    sg = SendGridAPIClient(config["apikey"])
+    response = sg.send(message)
     print("Sending mail...")

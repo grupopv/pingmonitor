@@ -1,10 +1,10 @@
 from subprocess import check_output
-from yaml import load
+from yaml import safe_load
 from lib.mail import sendgrid_mail
 
 def read_config():
     with open('config.yml', 'r') as f:
-        doc = load(f)
+        doc = safe_load(f)
     return doc
 
 def check_hdd():
