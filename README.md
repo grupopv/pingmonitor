@@ -1,9 +1,5 @@
 # Ping Monitor
 
-### Dependencies
-
-- PyYAML 3.x (https://pypi.org/project/PyYAML/)
-
 ### Installation
 
 Install dependencies:
