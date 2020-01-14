@@ -3,7 +3,7 @@
 from os import devnull
 from subprocess import call, STDOUT
 from lib.mail import sendgrid_mail
-from yaml import load
+from yaml import safe_load
 from datetime import datetime
 
 # Define /dev/null
@@ -11,7 +11,7 @@ FNULL = open(devnull, 'w')
 
 def read_config():
     with open('config.yml', 'r') as f:
-        doc = load(f)
+        doc = safe_load(f)
     return doc
 
 def ping_hosts():
