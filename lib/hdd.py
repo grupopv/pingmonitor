@@ -15,7 +15,7 @@ def check_hdd():
         porcentage = config ["hdd"]["porcentage_space"]
         hdd_usage = int(check_output("df -h | grep %s | awk \'{ print $%s }\' | sed -e \'s/.$//g\' | tr -d \'\n\' " % (partitions, available_space_col), shell=True))
         if hdd_usage >= porcentage:
-            print("HDD usage", hdd_usage, "%")
+            print("[WARN]", "HDD usage", hdd_usage, "%")
             sendgrid_mail('hdd', partitions, hdd_usage)
         else:
-            print("The partition", partitions, "has", hdd_usage, "% of disk usage [OK]")
+            print("[ OK ]", "The partition", partitions, "has", hdd_usage, "% of disk usage")

@@ -25,13 +25,14 @@ def ping_hosts():
         if schedule == 'always' or (schedule == 'working hours' and working_hours(config) == 'true'):
             res = call(['ping', '-c', str(count), ip], stdout=FNULL, stderr=STDOUT)
             if res == 0:
-                print("Ping to", name, "OK")
+                print("[ OK ]", "Ping to", name)
             elif res == 2:
                 # 100% failed
-                print("No response from", name)
+                print("[WARN]", "No response from", name)
                 sendgrid_mail('ping', name, ip)
             else:
-                print("ping to", name, "failed!")
+                print("[WARN]", "Ping to", name, "failed")
+                sendgrid_mail('ping', name, ip)
 
 def working_hours(config):
     weekdays_working_hours_start = datetime.now().replace(hour=config["working_hours"]["weekdays"]["start"]["hour"], minute=config["working_hours"]["weekdays"]["start"]["minute"], second=config["working_hours"]["weekdays"]["start"]["second"])

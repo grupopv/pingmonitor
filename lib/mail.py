@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
-#PingMonitor Telnet Mail Sender.
-#authors rgonzalez, cetinajero. Sep 2009
+# pingmonitor mail sender library
+# authors rgonzalez, cetinajero. Sep 2009
 
 import telnetlib
 import datetime
@@ -11,15 +11,6 @@ from sendgrid.helpers.mail import Mail
 from yaml import safe_load
 
 # Define variables
-host = "mail.pvlider.com"
-port = "25"
-msg = """Solo para comunicarle que la direccion ip %s no responde desde el %s de %s del %s.
-
-Atte.
-PingMonitor
-\r\n.\r\n
-"""
-
 today = datetime.datetime.today()
 day = today.strftime('%d')
 month = today.strftime('%h')
@@ -49,14 +40,15 @@ def telnet_mail(name, ip):
 
 def sendgrid_mail(type, name, value):
     config = read_config()
+    subject = config["subject"][type] % (name)
 
     message = Mail(
         from_email = config["from"],
         to_emails = config["to"],
-        subject = config["subject"][type] % (name),
+        subject = subject,
         html_content = config["html-content"][type] % (name, value, time, day, month, year)
     )
 
     sg = SendGridAPIClient(config["apikey"])
     response = sg.send(message)
-    print("Sending mail...")
+    print("[INFO]", "Sending mail:", subject)

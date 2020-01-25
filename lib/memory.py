@@ -20,7 +20,7 @@ def check_ram():
         ram_usage = int(100-(available_memory/total_memory)*100)
         host = fsdecode(check_output("hostname -f | tr -d \'\n\'", shell=True))
         if ram_usage >= porcentage:
-                print("The host", host, "RAM usage is", ram_usage, "%")
+                print("[WARN]", "The host", host, "RAM usage is", ram_usage, "%")
                 sendgrid_mail('ram', host, ram_usage)
         else:
-                print("The RAM memory is at", ram_usage, "% [OK]")
+                print("[ OK ]", "The RAM memory is at", ram_usage, "%")
