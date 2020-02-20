@@ -18,10 +18,9 @@
     "default": {
         "python-http-client": {
             "hashes": [
-                "sha256:025ba6c5c3d423682957612799af47f6de845ff8559e71325442576d16dc9ad9",
-                "sha256:f5f30b4f77d6f24b66ac9a914f49d202549587a5287464f15ef090ef72fab722"
+                "sha256:10bfbc7ecd25e55215680ce2827b1a3bf4e06ba4a59758039d047d6104b6f169"
             ],
-            "version": "==3.2.4"
+            "version": "==3.2.5"
         },
         "pyyaml": {
             "hashes": [
@@ -42,11 +41,11 @@
         },
         "sendgrid": {
             "hashes": [
-                "sha256:12ea8203c48c47b03dbe33e219408ca32c9259526d05b783418482d40f17943c",
-                "sha256:5ad98598c13b8cf5545d20f6fb6ecf967a08b48e3e175affabd82cfc71522d01"
+                "sha256:8112a3e2edd4cef208ed46335f058d2782397b395b96a472dcfd5e2618cf621b",
+                "sha256:e2b8bd90522f22a22d2557aee9cb77d0c372a8c4ca35e65d062b4ecaf0b9a4bd"
             ],
             "index": "pypi",
-            "version": "==6.1.1"
+            "version": "==6.1.2"
         }
     },
     "develop": {}
