@@ -4,5 +4,7 @@ update_configs:
   - package_manager: "python"
     directory: "/"
     update_schedule: "daily"
-    default_reviewers:
-      - "@grupopv/dev"
+    default_reviewers: ["cetinajero"]
+    default_labels:
+      - dependencies
+      - python
