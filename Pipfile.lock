@@ -41,11 +41,11 @@
         },
         "sendgrid": {
             "hashes": [
-                "sha256:37d8215974ec3c79085fc455332961bb788eb5d899adde1469640b605a940ec4",
-                "sha256:692c0ac35a6afed093e66e883b86dc7ec60b6b774bf5ef931d42efd19443a1fc"
+                "sha256:38c0853494c7bfbef64f33934c25bf98bb7648cf0e66a0cfb22410927e4ef4c7",
+                "sha256:838e1f7b0f84d56714be6a18ef66fbcf8fba0bda782eee35c47c04d7a16efde8"
             ],
             "index": "pypi",
-            "version": "==6.3.0"
+            "version": "==6.3.1"
         }
     },
     "develop": {}
