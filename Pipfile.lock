@@ -41,11 +41,11 @@
         },
         "sendgrid": {
             "hashes": [
-                "sha256:0374f2188b7737850d6064e4e882582edc317cf427d6b967b0a3248cba44afc0",
-                "sha256:76ffbe1187e96cc1133bcfc5438c7e3aa2d886584140a2ca2f588ec345d8489f"
+                "sha256:0bb53924d3f46e895c19150f4ee8451cebb59eee0aaa1f8f7232f37eac79ca7a",
+                "sha256:50e0061954ead24167a300f104a6c5ea11f1e132e4fdba440f634ed79a1cbef9"
             ],
             "index": "pypi",
-            "version": "==6.4.2"
+            "version": "==6.4.5"
         },
         "starkbank-ecdsa": {
             "hashes": [
