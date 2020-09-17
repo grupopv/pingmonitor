@@ -18,9 +18,9 @@
     "default": {
         "python-http-client": {
             "hashes": [
-                "sha256:93d6a26b426e48b04e589c1f103e7c040193e4ccc379ea50cd6e12f94cca7c69"
+                "sha256:f5cb0d407b30ed699c2f7ac4ba2ba8a1f2352d44bd9db6ea3bab98d081b433ce"
             ],
-            "version": "==3.2.7"
+            "version": "==3.3.1"
         },
         "pyyaml": {
             "hashes": [
@@ -41,17 +41,17 @@
         },
         "sendgrid": {
             "hashes": [
-                "sha256:0bb53924d3f46e895c19150f4ee8451cebb59eee0aaa1f8f7232f37eac79ca7a",
-                "sha256:50e0061954ead24167a300f104a6c5ea11f1e132e4fdba440f634ed79a1cbef9"
+                "sha256:177f959aab5882297fe07efe7db3c67d84fef2d55e3e1038edd4a20f3eb5f059",
+                "sha256:f6a4608e696e5851dd12a716abf97240f947027855e2205dff112c3fdc1bc127"
             ],
             "index": "pypi",
-            "version": "==6.4.5"
+            "version": "==6.4.7"
         },
         "starkbank-ecdsa": {
             "hashes": [
-                "sha256:cd17ec9fa7ad8ae3fc81a63ddb7e0d7fb798a048e40c1a9c55afd1a207d1eff9"
+                "sha256:423f81bb55c896a3c85ee98ac7da98826721eaee918f5c0c1dfff99e1972da0c"
             ],
-            "version": "==1.0.0"
+            "version": "==1.1.0"
         }
     },
     "develop": {}
