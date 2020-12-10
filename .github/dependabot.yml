@@ -4,7 +4,8 @@ updates:
   - package-ecosystem: pip
     directory: "/"
     schedule:
-      interval: daily
+      interval: weekly
+      day: thursday
       time: "09:00"
       timezone: "America/Chihuahua"
     open-pull-requests-limit: 10
